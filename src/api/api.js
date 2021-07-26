@@ -11,12 +11,16 @@ exports.baseURL  = ip+"/datawaiter/xiaosunnote";
 /**
  * 请求数据
  */
-var post = function({baseurl,url,data}) {
+var post = function({baseurl,url,data,headers}) {
   return axios({
     url:baseurl?baseurl+url:ip+url,
     method: 'post',
-    headers: { "Content-Type": "application/json"},
+    headers: headers || { "Content-Type": "application/json"},
     data: data,
+  }).then(res=>{
+    if(res.data.isOk){
+      return res.data.data;
+    }
   });
 };
 exports.post =post;
@@ -24,10 +28,17 @@ exports.post =post;
  * 请求数据
  */
 var get = function({baseurl,url,data}) {
+ /* if(data){
+    url = url + "?";
+    for(let key in data){
+      url = url + key+"="+data[key]+"&";
+    }
+    url =url.substring(0,url.length - 1);
+  }*/
+  url = param2URL(url,data);
   return axios({
     url:baseurl?baseurl+url:ip+url,
     method: 'get',
-    data: data,
   }).then(res=>{
     if(res.data.isOk){
       return res.data.data;
@@ -36,43 +47,32 @@ var get = function({baseurl,url,data}) {
 };
 exports.get =get;
 
-var requestGETOneData = function(req){
-	return get(req)
-		.then(datas=>{
-			if(datas && datas.length > 0){
-				return datas[datas.length-1];
+var param2URL = function(baseurl,data){
+  if(data){
+    baseurl = baseurl + "?";
+    for(let key in data){
+      baseurl = baseurl + key+"="+data[key]+"&";
+    }
+    baseurl =baseurl.substring(0,baseurl.length - 1);
+  }
+  return baseurl;
+};
+exports.param2URL =param2URL;
+
+var getOneData = function({baseurl,url,data}){
+
+	return get({baseurl,url,data})
+		.then(data=>{
+			if(data ){
+			  if(data instanceof  Array && data.length > 0){
+          return data[data.length-1];v
+        }else{
+			    return data;
+        }
 			}else{
 				return undefined;
-			}
+			}s
 		});
 };
-exports.requestGETOneData =requestGETOneData;
+exports.getOneData =getOneData;
 
-var uploadFile = function({filePath,dir,dirs}) {
-
-	let url = ip + "/file/upload";
-	//console.log(url)
-	return new Promise((resolve,reject)=>{
-		uni.uploadFile({
-			url: url, //仅为示例，非真实的接口地址
-			filePath: filePath,
-			name: 'file',
-			formData:{
-				dir:dir?dir:"",
-				dirs:dirs?dirs:""
-			},
-			success: (uploadFileRes) => {
-				let data = JSON.parse(uploadFileRes.data);
-				if(data.isOk){
-					resolve(data.data[0]);
-				}else{
-					reject(uploadFileRes);
-				}
-			},
-			fail: (e) => {
-				reject(e);
-			}
-		});
-	})
-}
-exports.uploadFile =uploadFile;

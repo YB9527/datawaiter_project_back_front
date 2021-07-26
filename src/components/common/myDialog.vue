@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dialogdata.show">
+  <div >
     <el-dialog
       class="dialog"
       :title="dialogdata.titleAMap[dialogdata.state].title"
@@ -8,7 +8,6 @@
       append-to-body
     >
       <div class="form">
-
         <el-row :gutter="layout.gutter" class="formitem" v-for="(row,index) in rowArray" :key="index">
           <el-col :span="config[column.enum+'gutter']" v-for="(column,j) in row" :key="index*100+j">
             <div :class="column.type">
@@ -47,7 +46,7 @@
             layout,
             rowArray,
           }
-        }
+        },
     }
 </script>
 

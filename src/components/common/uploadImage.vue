@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <el-upload
       action="#"
       :file-list="elupload.filelist"
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+
   export default {
     name: "uploadImage",
     props: {
@@ -58,10 +59,14 @@
       }
     },
     created(){
-      this.clearImage();
-      this.findImage();
+      this.init();
+
     },
     methods: {
+      init(){
+        this.clearImage();
+        this.findImage();
+      },
       clearImage(){
         let filelist = this.filelist;
         if(filelist.length > 0){
@@ -76,8 +81,13 @@
           deleteimageValue.splice(0,deleteimageValue.length);
         }
       },
-      findImage(){
-          
+      async findImage(){
+          let fjArray = await this.$FjApi.findImageByObjectidAndCustomname(this.elupload.objectid,this.elupload.customname);
+          for (let fj of fjArray){
+            fj.url  =  this.$Api.imgpriewurl+fj.path;
+            this.filelist.push(fj);
+          }
+         // console.log(333,fjArray)
       },
       onChange(file, fileList){
         if(file.status === "ready"){
@@ -102,13 +112,28 @@
       handleDownload(file) {
         console.log(file);
       },
-      saveAndDelete() {
-        console.log("addimageValue",this.addimageValue);
-        console.log("deleteimageValue",this.deleteimageValue);
+      async saveAndDelete() {
+        if(this.addimageValue.length > 0){
+          //this.$FjApi.uploadFile(this.addimageValue[0].raw,{extendname:"AAA.png"});
+
+          let files = [];
+          for (let file of  this.addimageValue) {
+            files.push(file.raw);
+          }
+          let  fjArray = this.elupload.getFJArray(this.addimageValue);
+          fjArray = await this.$FjApi.uploadFileArray(files,fjArray);
+          this.$FjApi.setURL(fjArray);
+
+        }
+        if(this.deleteimageValue.length > 0){
+          await this.$FjApi.deleteFJ(this.deleteimageValue);
+        }
+        this.init();
+        //console.log("addimageValue",this.addimageValue);
+        //console.log("deleteimageValue",this.deleteimageValue);
+
       },
-
     }
-
   }
 </script>
 

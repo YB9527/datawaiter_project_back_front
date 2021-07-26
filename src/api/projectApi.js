@@ -1,4 +1,5 @@
 import  Api from './api.js'
+import  FJApi from './fjApi.js'
 const baseurl  ="/project/";
 
 /**
@@ -12,10 +13,35 @@ var edit = function(project) {
 };
 exports.edit =edit;
 
+var updateAll = function(projectArray) {
+  return Api.post({
+    url:baseurl+"updateAll",
+    data: projectArray,
+  });
+};
+exports.updateAll =updateAll;
+
+var findById = function(id) {
+  return Api.getOneData({
+    url:baseurl+"findById",
+    data:{id}
+  }).then(project=>{
+    project.imageurl = FJApi.getURLByPath(project.imagepath);
+    return project;
+  });
+};
+exports.findById =findById;
 
 var findAll = function() {
   return Api.get({
     url:baseurl+"findall",
+  }).then(datas=>{
+    if(datas){
+      datas.forEach(project=>{
+        project.imageurl = FJApi.getURLByPath(project.imagepath);
+      })
+    }
+    return datas;
   });
 };
 exports.findAll =findAll;
