@@ -10,11 +10,11 @@
     <div class="projectlist">
         <div v-for="(item,index) in projectArray"
              :key="index"
-
+             @click="itemClick(state,index,item) "
             class="projectlistitem box">
             <div  class="imagediv"   >
               <el-image
-                @click="state=='update'&&editProject(index,item)"
+
                 class="img"
                 :src="item.imageurl"
                 fit="contain"></el-image>
@@ -80,6 +80,15 @@
             //console.log(projectArray);
             this.$Tool.arrayReplaceAll(this.projectArray,projectArray);
           },
+        itemClick(state,index,item){
+            //debugger
+            if(state === 'update'){
+              this.editProject(index,item)
+            }else{
+              this.gotoProject(index,item)
+            }
+
+        },
         async saveOk(dialogdata){
           dialogdata.show = false;
           await dialogdata.data.elupload.saveAndDelete();
@@ -122,6 +131,7 @@
          * 编辑项目
          */
         editProject(index,project){
+
           project = this.$Tool.copy(project);
           let dialogdata =  this.dialogdata;
           dialogdata.state = "update";
@@ -129,6 +139,7 @@
           dialogdata.data.elupload = this.getUpload();
           dialogdata.data.elupload.objectid = project.id;
           dialogdata.show = true;
+
         },
         /**
          * 保存所有项目
@@ -138,6 +149,10 @@
             this.projectArray[i].seq = i+1;
           }
           await projectApi.updateAll(this.projectArray);
+          this.$notify({
+            title: '保存成功',
+            type: 'success'
+          });
         },
         getUpload(){
           return {
@@ -161,6 +176,9 @@
               return fjArray;
             }
           }
+        },
+        gotoProject(index,item){
+          this.$router.push({ path: '/project/api', query: { projectid: item.id }});
         },
       }
     }

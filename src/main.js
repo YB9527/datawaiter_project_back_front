@@ -15,6 +15,7 @@ Vue.use(uuid);
 
 import Tool from '@/js/common/Tool.js'
 Vue.prototype.$Tool = Tool;
+Vue.prototype.$tool = Tool;
 
 import functionTool from '@/js/common/functionTool.js'
 Vue.prototype.$FunctionTool = functionTool;
@@ -25,6 +26,11 @@ Vue.prototype.$Api = Api;
 import fjApi from '@/api/fjApi.js'
 Vue.prototype.$FjApi = fjApi;
 
+import UITool from  '@/js/common/UITool.js';
+Vue.prototype.$uiTool = UITool;
+
+import StrTool from  '@/js/common/StrTool.js';
+Vue.prototype.$strTool = StrTool;
 
 Vue.config.productionTip = false;
 

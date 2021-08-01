@@ -22,6 +22,9 @@ var updateAll = function(projectArray) {
 exports.updateAll =updateAll;
 
 var findById = function(id) {
+  if(!id){
+    return ;
+  }
   return Api.getOneData({
     url:baseurl+"findById",
     data:{id}

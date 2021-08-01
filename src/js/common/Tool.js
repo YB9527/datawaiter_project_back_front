@@ -84,7 +84,7 @@ var groupByAttribute = function(array, attribute) {
 exports.groupByAttribute = groupByAttribute;
 
 //通过属性来
-var groupByAttributeSingle = function(array, attribute) {
+var groupByAttributeSingle = function(array, attribute="id") {
 	let map = {};
 	if (array) {
 		for (let item of array) {
@@ -360,3 +360,27 @@ var arrayReplaceAll = function(srcArray,descArray){
     }
 };
 exports.arrayReplaceAll = arrayReplaceAll;
+
+/**
+ * 替换数组中的对象
+ * @param array
+ * @param po
+ * @param key
+ * @returns {boolean}
+ */
+var replaceModel= function (array,po,key="id") {
+
+  if(array && array.length >0 && po  && po[key] ){
+    let id = po[key];
+    for (let i = 0; i < array.length; i++) {
+      let item = array[i];
+      if(item[key] === id){
+        array.splice(i,1,po);
+        return true;
+      }
+    }
+  }else{
+    return false;
+  }
+};
+exports.replaceModel = replaceModel;
