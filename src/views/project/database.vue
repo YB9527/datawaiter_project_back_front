@@ -168,9 +168,10 @@
            this.databaseEnumArray = datas;
          });*/
       //console.log(this.$store.state.project.project.id);
-      systemApi({url: DatabaseConnURLManager.findByProjectId(this.project.id)})
+      systemApi({url: DatabaseConnURLManager.findByProjectid(this.project.id)})
         .then(datas => {
           this.tableData = datas;
+          //console.log(1,datas);
         });
 
     },

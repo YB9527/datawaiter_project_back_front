@@ -72,7 +72,7 @@ export default {
     margin: 0;
   }
   .box {
-    border-radius: 15px;
+    border-radius: 8px;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     background-color: #FFFFFF;
   }
@@ -84,6 +84,17 @@ export default {
     justify-content: space-between;
   }
   .itemmargin{
-    margin-top: 20rpx;
+    margin-top: 10px;
+  }
+  .line{
+    margin: 5px 0 ;
+    border: 1px solid #fff;
+  }
+  .el-select,.el-cascader{
+    width: 100%;
+  }
+
+  .btnwidthall{
+    width: 100%;
   }
 </style>

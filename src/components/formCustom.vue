@@ -1,17 +1,25 @@
 <template>
   <div class="matchparent">
     <el-form label-position="right" v-model="elform.data" label-width="120px">
-      <el-form-item  v-for="(row,i) in elform.rows" :key="i" :label="row.label" :label-width="row.type === 'table'?'0px':''">
-        <el-select v-model="elform.data[row.name]" v-if="row.type === 'select'"  @input="onInput()">
+      <el-form-item v-for="(row,i) in elform.rows" :key="i" :label="row.label"
+                    :label-width="row.type === 'table'?'0px':''">
+        <el-select v-model="elform.data[row.name]" v-if="row.type === 'select'" @change="optionChange($event,row)"
+                   @input="onInput()">
           <el-option
-            v-for="(item,i) in row.options"
-            :key="item.id?item.id:item"
+            v-for="(item,j) in row.options"
+            :key="j"
             :label="item.label"
             :value="item.id?item.id:item"
-            >
+          >
           </el-option>
         </el-select>
-        <el-input v-model="elform.data[row.name]" :disabled="row.disabled" v-if="!row.type" @input="onInput()"></el-input>
+        <el-cascader
+          v-model="elform.data[row.name]" v-if="row.type === 'cascader'"
+          :options="row.options"
+        ></el-cascader>
+
+        <el-input v-model="elform.data[row.name]" :disabled="row.disabled" v-if="!row.type"
+                  @input="onInput()"></el-input>
         <table-custom
           v-if="row.type === 'table'"
           :datas="row.tableData"
@@ -24,26 +32,32 @@
 
 <script>
   import TableCustom from "./tableCustom";
+
   export default {
     name: "formCustom",
     components: {TableCustom},
     props: ['elform'],
     data() {
       return {
-        data:{},
+        data: {},
       }
     },
     created() {
 
     },
-    filters:{
-      test(va){
-        console.log("filter",va);
+    filters: {
+      test(va) {
+        console.log("filter", va);
         return va;
       }
-    },methods:{
-      onInput(){
+    }, methods: {
+      onInput() {
         this.$forceUpdate();
+      },
+      optionChange(key, row) {
+        if (row.change) {
+          row.change(key);
+        }
       }
     }
 

@@ -130,6 +130,7 @@
     methods: {
       async init(){
         let datas = await this.findApiLevelByParentId(this.project.id);
+        //debugger
         let roots = this.findRoots(datas);
         let parentidMap = this.$tool.groupByAttribute(datas, "parentId");
         for (let root of roots) {

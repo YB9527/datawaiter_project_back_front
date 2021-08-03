@@ -1,7 +1,7 @@
 <template>
   <div class="project " >
     <div class="nav">
-      <div class="projectname" @click="$router.push({path:'/projectlist'})">{{project&&project.name}}</div>
+      <div class="projectname el-link el-link--primary" @click="$router.push({path:'/projectlist'})">{{project&&project.name}}</div>
       <el-menu
         :default-active="activeIndex"
         class="el-menu-demo"
@@ -12,8 +12,8 @@
         active-text-color="#ffd04b">
         <el-menu-item index="/project/api">API</el-menu-item>
         <el-menu-item index="/project/database">数据库</el-menu-item>
-        <el-menu-item index="/project/dic">字典表</el-menu-item>
         <el-menu-item index="/project/resources">资源管理</el-menu-item>
+        <el-menu-item index="/project/projectdic">字典表</el-menu-item>
         <el-menu-item index="/project/projectlog">访问日志</el-menu-item>
         <el-menu-item index="/project/flow">流程</el-menu-item>
         <el-menu-item index="/project/user">用户管理</el-menu-item>
@@ -42,6 +42,7 @@
     },
     watch:{
       "$route.query.projectid"(porojectid){
+
         if(porojectid){
           this.projectid = porojectid;
           this.init();
@@ -59,6 +60,7 @@
     },
     methods: {
       async init(){
+        this.$store.commit("setProject","");
         let projectid  = this.projectid;
         localStorage.setItem('projectid',projectid);
 
@@ -86,7 +88,7 @@
       border-bottom: solid 0px #e6e6e6;
     }
     .projectname{
-      color:  #72c74e;
+
       font-size: 18px;
       padding-right: 100px;
       margin-right: 20px;

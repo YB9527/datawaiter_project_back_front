@@ -178,6 +178,7 @@
           }
         },
         gotoProject(index,item){
+
           this.$router.push({ path: '/project/api', query: { projectid: item.id }});
         },
       }

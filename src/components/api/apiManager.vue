@@ -27,6 +27,7 @@
   import DrawerCustom from "../drawerCustom";
   import ApiCRUD from "./apiCRUD";
   import MapperURLManager from '@/api/MapperURLManager.js'
+  import DatabaseConnURLManager from '@/api/DatabaseConnURLManager.js'
 
   export default {
     name: "ApiManager",
@@ -175,14 +176,24 @@
 
       }
     },
+    computed: {
+      'projectid'() {
+        return this.$store.state.project.id;
+      },
+      'projecturl'() {
+        return this.$store.state.project.url;
+      },
+    },
     created() {
       this.init();
     },
     watch: {
       levelId(node, oldValue) {
         this.init();
-      }
+      },
+
     },
+
     methods: {
 
       /**
@@ -192,7 +203,7 @@
        */
       openURL(index, api) {
 
-        let url = this.$Api.ip + "/datawaiter" + api.rootURL + "/" + api.selfURL;
+        let url = this.$Api.ip + "/datawaiter/"+ this.projecturl + api.rootURL + "/" + api.selfURL;
 
         systemApi({url: MapperURLManager.findMapperById(api.mapperId)})
           .then(mapper => {
@@ -282,8 +293,6 @@
         ];
       },
       newApi() {
-
-
         let data = this.modeldialog.elform.data;
         let id = this.$uuid.v4();
         if (data) {
@@ -300,12 +309,18 @@
             label: "",
             accessId: this.accessArray[0].id,
             rootURL: this.rootURL,
+            selfURL:"",
             levelId: this.levelId,
             databaseConnectId: this.poolArray[0].id,
             questMethod: this.questMethodArray[0],
             crud:this.crudArray[0].id,
+            projectid:this.projectid
           };
-        data.databaseConnectId  = localStorage.getItem('databaseConnectId');
+        let databaseConnectId = localStorage.getItem(this.projectid+ 'databaseConnectId');
+        if(databaseConnectId != null){
+          data.databaseConnectId  =databaseConnectId;
+        }
+
         return data;
       },
       findRootURL(url, level) {
@@ -371,7 +386,7 @@
             this.rootURL = this.findRootURL("", level);
           });
 
-        systemApi({url: SysURLManager.findByTableName(this.$strTool.pooltablename)})
+        systemApi({url: DatabaseConnURLManager.findByProjectid(this.projectid)})
           .then(datas => {
             this.poolArray = datas;
             this.poolMap = this.$tool.groupByAttributeSingle(datas);

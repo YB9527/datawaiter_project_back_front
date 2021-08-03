@@ -26,9 +26,9 @@ var   findTableAllByDatabaseId = function () {
 };
 exports.findTableAllByDatabaseId = findTableAllByDatabaseId;
 
-var   findByProjectId = function (projectid) {
+var   findByProjectid = function (projectid) {
 
   return baseurl+"/findByProjectId?projectid="+ projectid;
 };
-exports.findByProjectId = findByProjectId;
+exports.findByProjectid = findByProjectid;
 

@@ -18,8 +18,8 @@
       <!--<table-custom :datas="autoAddBeanDialog.datas" :columns="autoAddBeanDialog.columns"></table-custom>-->
 
       <el-row :gutter="24">
-        <el-col :span="6" v-for="(autoCreateMapper,i) in autoCreateMapperArray" style="text-align: center">
-          <el-checkbox :key="i" v-model="autoCreateMapper.checked">{{autoCreateMapper.label}}</el-checkbox>
+        <el-col :span="6" v-for="(autoCreateMapper,i) in autoCreateMapperArray"   :key="i" style="text-align: center">
+          <el-checkbox v-model="autoCreateMapper.checked">{{autoCreateMapper.label}}</el-checkbox>
         </el-col>
 
       </el-row>
