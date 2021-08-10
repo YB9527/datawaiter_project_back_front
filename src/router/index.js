@@ -4,6 +4,9 @@ import HelloWorld from '@/components/HelloWorld'
 import projectRouter from './modules/project'
 import indexRouter from './modules/index'
 import userRouter from './modules/user'
+import testRouter from './modules/test'
+
+import  projectlist from '@/views/index/projectList.vue'
 
 Vue.use(Router)
 
@@ -11,11 +14,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'projectlist',
+      component: projectlist
     },
     projectRouter,
     userRouter,
-    indexRouter
+    indexRouter,
+    testRouter
   ]
 })

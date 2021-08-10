@@ -64,18 +64,51 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   #app {
     height: 100%;
+    .right{
+      width: calc(100% - 250px);
+      height: 100%;
+    }
   }
   body{
     margin: 0;
+  }
+  .matchparent{
+    height: 100%;
+    width: 100%;
+  }
+  .bg{
+    background-color: #f1f1f1;
   }
   .box {
     border-radius: 8px;
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     background-color: #FFFFFF;
   }
+  .top{
+    height: 60px;
+  }
+  .left{
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid #fff;
+    .listitem:hover{
+      background: #f0f9eb !important;
+    }
+    .active{
+      background: #b3e19d !important;
+    }
+  }
+  .itemhover:hover{
+    background: #f0f9eb !important;
+  }
+  .itemactive{
+    background: #b3e19d !important;
+  }
+
+
   .row{
     display: flex;
   }
@@ -93,8 +126,36 @@ export default {
   .el-select,.el-cascader{
     width: 100%;
   }
-
+  .submitbutton{
+    width: 150px;
+  }
   .btnwidthall{
     width: 100%;
   }
+  .nvlist{
+    display: flex;
+    .active{
+      border-top: 3px solid  #67c23a;
+    }
+    .nvitem{
+      width: 150px;
+      height: 60px;
+      flex-direction: column;
+      display: flex;
+      justify-content: space-around;
+      margin: 0 20px 0px 0;
+      cursor: pointer;
+      .label{
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+      }
+      .value{
+        color: #333;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+
 </style>

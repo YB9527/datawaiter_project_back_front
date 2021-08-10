@@ -151,7 +151,8 @@
           await projectApi.updateAll(this.projectArray);
           this.$notify({
             title: '保存成功',
-            type: 'success'
+            type: 'success',
+            duration:-1
           });
         },
         getUpload(){

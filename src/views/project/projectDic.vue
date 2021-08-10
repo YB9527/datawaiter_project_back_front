@@ -1,5 +1,6 @@
 <template>
-  <div class="projectdicvue" v-if="show">
+  <div class="projectdicvue bg matchparent" v-if="show">
+
     <div class="nv">
       <div class="nvlist">
         <div class="nvitem box"
@@ -349,9 +350,6 @@
 
 <style lang="scss">
   .projectdicvue{
-    background: #f1f1f1;
-    min-height: 100%;
-    padding: 20px;
     .delete{
       position: absolute;
       top: 5px;
@@ -413,33 +411,33 @@
     }
     .nv{
       display: flex;
+      padding: 20px 20px 0 20px;
       .nvlist{
         display: flex;
         width: calc(100% - 100px);
-      }
-
-      .active{
-        border-bottom: 3px solid  #67c23a;
-      }
-      .nvitem{
-        padding: 20px;
-        width: 150px;
-        height: 60px;
-        flex-direction: column;
-        display: flex;
-        justify-content: space-around;
-        margin: 0 20px 0px 0;
-        cursor: pointer;
-        position: relative;
-        .label{
-          font-size: 14px;
-          color: #999;
-          width: 70px;
-          text-align: right;
+        .active{
+          border-bottom: 3px solid  #67c23a;
         }
-        .value{
-          color: #333;
-          letter-spacing: 2px;
+        .nvitem{
+          padding: 20px;
+          width: 150px;
+          height: 60px;
+          flex-direction: column;
+          display: flex;
+          justify-content: space-around;
+          margin: 0 20px 0px 0;
+          cursor: pointer;
+          position: relative;
+          .label{
+            font-size: 14px;
+            color: #999;
+            width: 70px;
+            text-align: right;
+          }
+          .value{
+            color: #333;
+            letter-spacing: 2px;
+          }
         }
       }
     }

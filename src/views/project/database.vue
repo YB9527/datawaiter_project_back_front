@@ -120,13 +120,13 @@
                   this.lookConnection(index, row);
                 },
               },*/
-              {
+             /* {
                 label: "装备Bean",
                 type: "info",
                 click: (index, row) => {
                   this.$router.push({path: '/project/mapper?databaseId=' + row.id});
                 },
-              },
+              },*/
               {
                 label: "编辑",
                 type: "warning",

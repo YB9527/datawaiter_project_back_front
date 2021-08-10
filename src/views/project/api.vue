@@ -1,5 +1,5 @@
 <template>
-  <div class="matchparent apivue">
+  <div class="matchparent apivue bg">
     <!--<div class="left">
       <div>
         <el-row style="text-align: center">

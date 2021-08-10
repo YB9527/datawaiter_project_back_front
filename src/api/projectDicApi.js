@@ -36,6 +36,13 @@ var findByProjectid = function(projectid) {
 };
 exports.findByProjectid =findByProjectid;
 
+var findAllByProjectid = function(projectid) {
+  return Api.get({
+    url:baseurl+"findAllByProjectid?projectid="+projectid,
+  });
+};
+exports.findAllByProjectid =findAllByProjectid;
+
 var findDicGroup = function(databaseconnectid,dictablename){
   return Api.get({
     url:baseurl+"finddicgroup?databaseconnectid="+databaseconnectid+"&dictablename="+dictablename,
@@ -75,3 +82,6 @@ var deleteDic = function(projectdicid,dic) {
   });
 };
 exports.deleteDic = deleteDic;
+
+
+

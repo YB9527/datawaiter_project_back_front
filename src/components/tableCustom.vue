@@ -10,11 +10,27 @@
     >
       <template v-for="(item, index) of columns">
         <el-table-column
-          v-if="item.type === 'text'"
+          v-if="item.type === 'template'"
+          :key="index"
+          :prop="item.prop"
+          :label="item.label"
+          :align="item.align ? item.align : 'center'"
+          :width="item.width"
+        >
+          <template v-if="item.headertemplate" slot="header"  slot-scope="scope">
+            <div v-html="item.headertemplate"></div>
+          </template>
+          <template slot-scope="scope">
+            <div v-html="item.template"></div>
+          </template>
+        </el-table-column>
+
+        <el-table-column
+          v-else-if="item.type === 'text'"
           :key="index"
           :fixed="item.fixed"
           :prop="item.prop"
-
+          :filters="item.filters"
           :label="item.label"
           :align="item.align ? item.align : 'center'"
           :width="item.width"
@@ -43,6 +59,7 @@
           :label="item.label"
           :align="item.align ? item.align : 'center'"
           :width="item.width"
+          :filters="item.filters"
         >
           <template slot="header"  slot-scope="scope">
             <table-header :item="item"></table-header>
@@ -57,6 +74,7 @@
               size="mini"
               :type="item2.type"
               v-show="item2.show ?(item2.show( scope.$index,scope.row)):true"
+              :filters="item.filters"
             >{{ item2.label }}</el-button>
               </el-button-group>
 
@@ -70,6 +88,7 @@
           :type="item.type"
           :key="index"
           :width="item.width"
+          :filters="item.filters"
         >
         </el-table-column>
         <el-table-column
@@ -81,7 +100,7 @@
           :align="item.align ? item.align : 'center'"
           :width="item.width"
           :type="item.type"
-
+          :filters="item.filters"
         >
           <template slot="header"  slot-scope="scope">
             <table-header :item="item"></table-header>

@@ -49,3 +49,10 @@ var findAll = function() {
 };
 exports.findAll =findAll;
 
+var findalltablebyprojectid = function(projectid) {
+  return Api.get({
+    url:baseurl+"findalltablebyprojectid",
+    data:{projectid}
+  });
+};
+exports.findalltablebyprojectid =findalltablebyprojectid;

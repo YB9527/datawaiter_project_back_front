@@ -42,8 +42,6 @@
   import TableCustom from "../tableCustom";
   import DialogCustom from "../dialogCustom";
   import {systemApi} from '@/api/datarequset.js';
-  import SysURLManager from '@/api/SysURLManager.js';
-  import ApiURLManager from '@/api/ApiURLManager.js'
   import MapperURLManager from '@/api/MapperURLManager.js'
   import DrawerCustom from "../drawerCustom";
   import mapperCRUD from "./mapperCRUD";
@@ -172,8 +170,14 @@
     },
     watch:{
       tableName(){
+        //console.log(11);
         this.init();
-      }
+      },
+      databaseId(){
+        //console.log(11);
+        this.init();
+      },
+
     },
     created() {
       this.init();

@@ -35,7 +35,12 @@ Vue.prototype.$strTool = StrTool;
 
 Vue.config.productionTip = false;
 
-
+Vue.filter('sfFilter',value=>{
+  if(value !== undefined){
+    return value?"是":"否";
+  }
+  return "";
+});
 
 /* eslint-disable no-new */
 new Vue({
