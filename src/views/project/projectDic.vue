@@ -363,27 +363,7 @@
       width: 250px;
       height: 100%;
       border-right: 1px solid #fff;
-      .active{
-        background: #f0f9eb;
-        border-right: 3px solid  #67c23a;
-        .label{
-          color: #67c23a !important;
-          font-size: 18px;
-        }
 
-      }
-      .item {
-        cursor: pointer;
-        padding: 10px;
-        border-bottom: 1px solid #fff;
-        .name {
-          font-size: 10px;
-        }
-        .label {
-          font-size: 14px;
-        }
-
-      }
     }
 
     .right{

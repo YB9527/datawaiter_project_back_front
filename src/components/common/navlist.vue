@@ -33,7 +33,7 @@
         },
       methods:{
         navClick(index,item){
-          this.$emit("navClick",index,item);
+          //this.$emit("navClick",index,item);
         }
       }
     }

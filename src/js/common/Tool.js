@@ -384,3 +384,36 @@ var replaceModel= function (array,po,key="id") {
   }
 };
 exports.replaceModel = replaceModel;
+
+var arrayDeleteModel =  function  (array,data,key='id') {
+
+  for (var i = 0; i < array.length; i++) {
+    if(array[i][key] === data[key]){
+      array.splice(i,1);
+      break;
+    }
+  }
+}
+exports.arrayDeleteModel = arrayDeleteModel;
+
+var arrayToDataLevel= function (parent, array,pid="pid") {
+
+    if(parent && array){
+      for (let data of array){
+
+        if( parent.id === data[pid]){
+          let children = parent.children;
+          if(!children){
+            parent.children = [];
+            children = parent.children;
+          }
+          children.push(data);
+          data.parent =copy(parent);
+
+          arrayToDataLevel(data,array);
+        }
+      }
+    }
+
+};
+exports.arrayToDataLevel = arrayToDataLevel;

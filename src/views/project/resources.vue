@@ -1,6 +1,6 @@
 <template>
   <div class="matchparent resoucesvue bg">
-    <div class="top">
+    <div class="topnav">
       <navlist @click="navClick" :nav="nav"></navlist>
     </div>
     <div class="line"></div>
@@ -121,9 +121,7 @@
 
 <style lang="scss">
   .resoucesvue {
-    .top{
-      padding: 10px 20px;
-    }
+
     .el-collapse-item__content{
       background: #f1f1f1;
     }

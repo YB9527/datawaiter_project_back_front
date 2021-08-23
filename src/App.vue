@@ -65,6 +65,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import  '/css/glob.css';
+
   #app {
     height: 100%;
     .right{
@@ -87,6 +89,9 @@ export default {
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     background-color: #FFFFFF;
   }
+  .topnav{
+    padding: 10px 20px;
+  }
   .top{
     height: 60px;
   }
@@ -99,6 +104,28 @@ export default {
     }
     .active{
       background: #b3e19d !important;
+    }
+
+    .active{
+      background: #f0f9eb;
+      border-right: 3px solid  #67c23a;
+      .label{
+        color: #67c23a !important;
+        font-size: 18px;
+      }
+
+    }
+    .item {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #fff;
+      .name {
+        font-size: 10px;
+      }
+      .label {
+        font-size: 14px;
+      }
+
     }
   }
   .itemhover:hover{

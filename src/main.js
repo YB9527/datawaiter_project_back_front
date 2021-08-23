@@ -7,8 +7,12 @@ import store from './store'
 
 import ElementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
-import '@/js/element-variables.scss'
+import '@/css/element-variables.scss'
 Vue.use(ElementUI);
+
+// 引入echarts
+import * as echarts from 'echarts';
+Vue.prototype.$Echarts = echarts;
 
 import uuid from 'vue-uuid'
 Vue.use(uuid);
@@ -18,7 +22,7 @@ import Tool from '@/js/common/Tool.js'
 Vue.prototype.$Tool = Tool;
 Vue.prototype.$tool = Tool;
 
-import functionTool from '@/js/common/functionTool.js'
+import functionTool from '@/js/common/FunctionTool.js'
 Vue.prototype.$FunctionTool = functionTool;
 
 import   Api from '@/api/api.js'
@@ -32,6 +36,9 @@ Vue.prototype.$uiTool = UITool;
 
 import StrTool from  '@/js/common/StrTool.js';
 Vue.prototype.$strTool = StrTool;
+
+
+Vue.component("dialogCustom",()=>import('@/components/dialogCustom'));
 
 Vue.config.productionTip = false;
 
