@@ -8,6 +8,7 @@ import  resources from '@/views/project/resources.vue'
 import  mapper from '@/views/project/mapper.vue'
 import  flow from '@/views/project/flow.vue'
 
+
 const project = {
   path: '/project',
   component: index,
@@ -52,6 +53,11 @@ const project = {
       path: 'flow',
       component: flow,
       name: 'flow',
+    },
+    {
+      path: 'pageconfig',
+      component: ()=>import("@/views/project/pageconfig.vue"),
+      name: 'pageconfig',
     }
   ]
 };

@@ -17,6 +17,7 @@
         <el-menu-item index="/project/projectlog">访问日志</el-menu-item>
         <el-menu-item index="/project/flow">流程</el-menu-item>
         <el-menu-item index="/project/user">用户管理</el-menu-item>
+        <el-menu-item index="/project/pageconfig">页面配置</el-menu-item>
       </el-menu>
     </div>
 
