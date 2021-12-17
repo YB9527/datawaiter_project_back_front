@@ -143,7 +143,7 @@
       projectdiccurrentindex(index){
         let {databaseconnectid,dictablename} = this.projectdicArray[index];
         projectDicApi.findDicGroup(databaseconnectid,dictablename).then(dicgroupArray=>{
-          this.$Tool.arrayReplaceAll(this.dicgroupArray,dicgroupArray);
+          this.$Tool.arrayReplace(this.dicgroupArray,dicgroupArray);
           this.dicgroupcurrentindex = 0;
         });
       },
@@ -152,7 +152,7 @@
         let {databaseconnectid,dictablename} = this.projectdicArray[this.projectdiccurrentindex];
         projectDicApi.findDicGroupInAll(databaseconnectid,dictablename,dicgroup).then(dicArray=>{
           //console.log(dicArray);
-          this.$Tool.arrayReplaceAll(this.dicArray,dicArray);
+          this.$Tool.arrayReplace(this.dicArray,dicArray);
         });
       },
     },

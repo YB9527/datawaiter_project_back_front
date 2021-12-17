@@ -29,6 +29,7 @@ export default {
 
       systemApi({url: SysURLManager.findEnums(this.$strTool.accessstate)})
         .then(datas => {
+
           this.$store.state.share.accessArray = datas;
           this.$store.state.share.accessMap = this.$tool.groupByAttributeSingle(datas);
         });
@@ -65,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import  '/css/glob.css';
+  @import  '../static/css/glob.css';
 
   #app {
     height: 100%;

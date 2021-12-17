@@ -70,7 +70,7 @@
      async  init() {
         let dataArray =await postionApi.findGroupByProjectid(this.projectid);
         console.log(dataArray);
-        this.$Tool.arrayReplaceAll(this.positionGroupArray,dataArray);
+        this.$Tool.arrayReplace(this.positionGroupArray,dataArray);
         this.initChart();
       },
       /**

@@ -7,7 +7,7 @@ import store from './store'
 
 import ElementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
-import '@/css/element-variables.scss'
+import '../static/css/element-variables.scss'
 Vue.use(ElementUI);
 
 // 引入echarts
@@ -18,11 +18,11 @@ import uuid from 'vue-uuid'
 Vue.use(uuid);
 
 
-import Tool from '@/js/common/Tool.js'
+import * as Tool from '@/common/js/Tool.js'
 Vue.prototype.$Tool = Tool;
 Vue.prototype.$tool = Tool;
 
-import functionTool from '@/js/common/FunctionTool.js'
+import  functionTool from '@/common/js/FunctionTool.js'
 Vue.prototype.$FunctionTool = functionTool;
 
 import   Api from '@/api/api.js'
@@ -31,10 +31,10 @@ Vue.prototype.$Api = Api;
 import fjApi from '@/api/fjApi.js'
 Vue.prototype.$FjApi = fjApi;
 
-import UITool from  '@/js/common/UITool.js';
+import UITool from  '@//common/js/UITool.js';
 Vue.prototype.$uiTool = UITool;
 
-import StrTool from  '@/js/common/StrTool.js';
+import StrTool from  '@/common/js/StrTool.js';
 Vue.prototype.$strTool = StrTool;
 
 

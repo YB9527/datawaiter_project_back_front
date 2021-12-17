@@ -244,7 +244,7 @@
             this.accessArray = this.$store.state.share.accessArray;
             this.questMethodArray = this.$store.state.share.questMethodArray;
             this.tableData = [];
-            this.$Tool.arrayReplaceAll( this.tableData , results[0]);
+            this.$Tool.arrayReplace( this.tableData , results[0]);
           });
       },
       findCurrentMappers() {

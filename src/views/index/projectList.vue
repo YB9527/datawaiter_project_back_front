@@ -78,7 +78,7 @@
           async init(){
             let projectArray =await  projectApi.findAll();
             //console.log(projectArray);
-            this.$Tool.arrayReplaceAll(this.projectArray,projectArray);
+            this.$Tool.arrayReplace(this.projectArray,projectArray);
           },
         itemClick(state,index,item){
             //debugger

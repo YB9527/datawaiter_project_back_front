@@ -36,8 +36,9 @@ var findById = function(id) {
 exports.findById =findById;
 
 var findAll = function() {
-  return Api.get({
+  return Api.post({
     url:baseurl+"findall",
+    data:{},
   }).then(datas=>{
     if(datas){
       datas.forEach(project=>{

@@ -48,7 +48,7 @@
       async init() {
         let dataArray = await organizationApi.findByProjectid(this.projectid);
         console.log(1,dataArray);
-        this.$Tool.arrayReplaceAll(this.organizationArray, dataArray);
+        this.$Tool.arrayReplace(this.organizationArray, dataArray);
         this.initChart();
       },
       async modeldialogOk() {
